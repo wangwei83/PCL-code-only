@@ -1,61 +1,30 @@
-//ÏÔÊ¾Êı¾İ£¬²âÊÔÁËÒ»ÏÂ£¬²»ÄÜÍ¬²½µ½ÁíÍâÒ»¸öµçÄÔ½øĞĞ±àÒë
-/*
-#include<iostream>
-#include<pcl/io/pcd_io.h>
-#include<pcl/point_types.h>
-
-int main(int argc, char** argv)   //ÔËĞĞÊ±°ÑÃüÁîĞĞ´°¿Ú´«¸øÖ÷³ÌĞò
-{
-	//´´½¨ÁËÒ»¸öÃûÎªcloudµÄÖ¸Õë£¬´¢´æXYZÀàĞÍµÄµãÔÆÊı¾İ
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-
-	//
-	//*´ò¿ªµãÔÆÎÄ¼ş
-	if (pcl::io::loadPCDFile<pcl::PointXYZ>("C://Users//Administrator//Desktop//test1//Project2//rabbit.pcd", *cloud) == -1)  //´ò¿ªÒ»¸öÎÄ¼ş£¬Èç¹ûÓĞ´í£¬·µ»ØÖµ-1£¬±íÊ¾º¯ÊıÊ§°Ü
-	{
-		PCL_ERROR("Couldn't read file rabbit.pcd\n");
-		return(-1);
-	}
-	std::cout << "Loaded:" << cloud->width*cloud->height << "data points from test_pcd.pcd with the following fields:" << std::endl;
-	// ->±íÊ¾ÌáÈ¡cloudÖĞµÄwidth
-	for (size_t i = 0; i < cloud->points.size(); ++i)   //points.size±íÊ¾µãÔÆÊı¾İµÄ´óĞ¡
-	{
-		std::cout << "      " << cloud->points[i].x << "   " << cloud->points[i].y << "   " << cloud->points[i].z << "   " << std::endl;
-	}
-	system("pause");
-	return 0;
-}
-
-*/
-//Êı¾İ¿ÉÊÓ»¯
+//æ•°æ®å¯è§†åŒ–
 #include<iostream>
 #include<pcl/io/pcd_io.h>
 #include<pcl/point_types.h>
 #include <pcl/visualization/cloud_viewer.h>
 
-void viewerOneOff(pcl::visualization::PCLVisualizer& viewer)    //ÉèÖÃ±³¾°ÑÕÉ«
+void viewerOneOff(pcl::visualization::PCLVisualizer& viewer)    //è®¾ç½®èƒŒæ™¯é¢œè‰²
 {
-	viewer.setBackgroundColor(1.0f, 0.8f, 1.0f);
+	viewer.setBackgroundColor(1.0f, 0.5f, 1.0f);
 }
 
 int main(int argc, char** argv)
 {
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
-	//
-	//*´ò¿ªµãÔÆÎÄ¼ş
-	//if (pcl::io::loadPCDFile<pcl::PointXYZ>("C://Users//Administrator//Desktop//test1//Project2//rabbit.pcd", *cloud) == -1)  
+	//æ‰“å¼€ç‚¹äº‘æ–‡ä»¶
 	if (pcl::io::loadPCDFile<pcl::PointXYZ>("C://ism_test_cat.pcd", *cloud) == -1)
-		//¸ù¾İ×Ô¼ºpcdÎÄ¼şµÄÂ·¾¶½øĞĞÌí¼Ó
+		//æ ¹æ®è‡ªå·±pcdæ–‡ä»¶çš„è·¯å¾„è¿›è¡Œæ·»åŠ 
 	{
 		PCL_ERROR("Couldn't read file rabbit.pcd\n");
 		return(-1);
 	}
-	std::cout << cloud->points.size() << std::endl;   //points.size() ±íÊ¾Êı¾İµÄ´óĞ¡Ò²¾ÍÊÇËµµãÔÆÎÄ¼şÖĞ¶àÉÙ¸öµã
-	pcl::visualization::CloudViewer viewer("cloud viewer");  //showCloud º¯ÊıÊÇÍ¬²½µÄ£¬ÔÚ´Ë´¦µÈ´ıÖ±µ½äÖÈ¾ÏÔÊ¾ÎªÖ¹
-	viewer.showCloud(cloud);    //¸Ã×¢²áº¯ÊıÔÚ¿ÉÊÓ»¯Ê±Ö»µ÷ÓÃÒ»´Î
+	std::cout << cloud->points.size() << std::endl;   //points.size() è¡¨ç¤ºæ•°æ®çš„å¤§å°ä¹Ÿå°±æ˜¯è¯´ç‚¹äº‘æ–‡ä»¶ä¸­å¤šå°‘ä¸ªç‚¹
+	pcl::visualization::CloudViewer viewer("cloud viewer");  //showCloud å‡½æ•°æ˜¯åŒæ­¥çš„ï¼Œåœ¨æ­¤å¤„ç­‰å¾…ç›´åˆ°æ¸²æŸ“æ˜¾ç¤ºä¸ºæ­¢
+	viewer.showCloud(cloud);    //è¯¥æ³¨å†Œå‡½æ•°åœ¨å¯è§†åŒ–æ—¶åªè°ƒç”¨ä¸€æ¬¡
 
-	viewer.runOnVisualizationThreadOnce(viewerOneOff);   //¸Ã×¢²áº¯ÊıÔÚäÖÈ¾Êä³öÊÇÃ¿´Î¶¼µ÷ÓÃ
+	viewer.runOnVisualizationThreadOnce(viewerOneOff);   //è¯¥æ³¨å†Œå‡½æ•°åœ¨æ¸²æŸ“è¾“å‡ºæ˜¯æ¯æ¬¡éƒ½è°ƒç”¨
 
 	while (!viewer.wasStopped())
 	{
