@@ -83,7 +83,7 @@ main(int argc, char** argv)
     align.setSourceFeatures(object_features);
     align.setInputTarget(scene);
     align.setTargetFeatures(scene_features);
-    align.setMaximumIterations(50000); // Number of RANSAC iterations
+    align.setMaximumIterations(5000); // Number of RANSAC iterations
     align.setNumberOfSamples(10);// Number of points to sample for generating/prerejecting a pose
     align.setCorrespondenceRandomness(5); // Number of nearest features to use
     align.setSimilarityThreshold(0.1f); // Polygonal edge length similarity threshold
