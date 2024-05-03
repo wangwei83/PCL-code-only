@@ -1,3 +1,5 @@
+//https://blog.csdn.net/Small_Munich/article/details/106576902  【pcl入门教程滤波系列】之passThrough滤波
+//https://github.com/halostorm/pointCloud_ground_detection/blob/master/16line.pcd  数据集
 #include <iostream>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
