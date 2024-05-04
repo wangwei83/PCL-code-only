@@ -6,3 +6,5 @@
 
 # PCL(Point Cloud Library)学习记录（2024）刚发现的，值得参考的一个学习记录
 https://www.yuque.com/huangzhongqing/pcl
+
+kd树可以用于二维也可以用于三维
